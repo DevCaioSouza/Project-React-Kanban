@@ -3,6 +3,8 @@ import "./tasklist.css"
 import PropTypes from "prop-types";
 // Para adicionar propTypes, digite no terminal "npm install prop-types"
 
+import TaskItem from "../TaskItem/TaskItem";
+
 export default function TaskList({title, onAddTask, tasks}) {
 
     const addTask = () => {
@@ -14,7 +16,11 @@ export default function TaskList({title, onAddTask, tasks}) {
             <div className="title">{title}</div>
             <div className="content">
                 {tasks.map((task) => {
-                    return <div key={task.id}>{task.title}</div>
+                    return <TaskItem 
+                    key={task.id}
+                    id={task.id} 
+                    title={task.title} 
+                    taskState={task.state} />
                 })}
             </div>
             <button onClick={addTask}>Adicionar Tarefa</button>
