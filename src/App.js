@@ -38,6 +38,12 @@ function App() {
     })
   }
 
+  const deleteTask = (id) => {
+    setTasks((existingTasks) => {
+      return existingTasks.filter((task) => task.id !== id)
+    })
+  }
+
   return (
     <div className="App">
       <Navbar /> {/* Assim uma função é chamada no React.
@@ -48,21 +54,24 @@ function App() {
         onAddTask={addTask} 
         taskState="Pendente"
         tasks={tasks.filter((t) => t.state === "Pendente" )} 
-        onTaskUpdate={updateTask} />
+        onTaskUpdate={updateTask}
+        onDeleteTask={deleteTask} />
 
         <TaskList 
         title="Fazendo" 
         onAddTask={addTask}
         taskState="Fazendo" 
         tasks={tasks.filter((t) => t.state === "Fazendo")} 
-        onTaskUpdate={updateTask} />
+        onTaskUpdate={updateTask}
+        onDeleteTask={deleteTask} />
 
         <TaskList 
         title="Completa" 
         onAddTask={addTask} 
         taskState="Completa"
         tasks={tasks.filter((t) => t.state === "Completa")} 
-        onTaskUpdate={updateTask} />
+        onTaskUpdate={updateTask}
+        onDeleteTask={deleteTask} />
         
       </div>
     </div>

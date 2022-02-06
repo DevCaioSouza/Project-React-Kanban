@@ -10,7 +10,9 @@ export default function TaskList({
     taskState, 
     onAddTask, 
     tasks, 
-    onTaskUpdate}) {
+    onTaskUpdate,
+    onDeleteTask
+}) {
 
     const addTask = () => {
         onAddTask('Nova Tarefa', taskState);
@@ -26,7 +28,8 @@ export default function TaskList({
                     id={task.id} 
                     title={task.title} 
                     taskState={task.state}
-                    onTaskUpdate={onTaskUpdate} />
+                    onTaskUpdate={onTaskUpdate}
+                    onDeleteTask={onDeleteTask} />
                 })}
             </div>
             <button onClick={addTask}>Adicionar Tarefa</button>
